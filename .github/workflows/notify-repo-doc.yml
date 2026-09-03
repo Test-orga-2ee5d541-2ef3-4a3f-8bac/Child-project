@@ -2,8 +2,9 @@ name: Notify parent docs site
 
 on:
   push:
-    tags:
-      - 'v*'
+    branches: [main]
+    paths:
+      - 'docs/**'
   workflow_dispatch:
 
 permissions:
