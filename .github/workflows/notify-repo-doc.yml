@@ -1,28 +1,19 @@
-name: notify-repo-doc.yml
+name: Notify parent docs site
+
 on:
   push:
-    branches: [main]
-    paths:
-      - 'docs/**'
+    tags:
+      - 'v*'
   workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   notify:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Generate GitHub App token
-        id: app-token
-        uses: actions/create-github-app-token@v1
-        with:
-          app-id: ${{ secrets.DOCS_SYNC_APP_ID }}
-          private-key: ${{ secrets.DOCS_SYNC_APP_PRIVATE_KEY }}
-          owner: Test-orga-2ee5d541-2ef3-4a3f-8bac
-          repositories: Parent-project
-
-      - name: Debug - raw token access
-        run: |
-          curl -X POST \
-          -H "Authorization: token ${{ steps.app-token.outputs.token }}" \
-          -H "Accept: application/vnd.github+json" \
-          https://api.github.com/repos/Test-orga-2ee5d541-2ef3-4a3f-8bac/Parent-project/dispatches \
-          -d '{"event_type":"child-docs-updated"}'
+    uses: Test-orga-2ee5d541-2ef3-4a3f-8bac/docs-workflows/.github/workflows/notify-parent-docs.yml@v1
+    with:
+      event_type: 'child project trigger'
+    secrets:
+      app_id: ${{ secrets.DOCS_SYNC_APP_ID }}
+      app_private_key: ${{ secrets.DOCS_SYNC_APP_PRIVATE_KEY }}
