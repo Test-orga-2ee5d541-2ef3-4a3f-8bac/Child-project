@@ -9,6 +9,14 @@ jobs:
   notify:
     runs-on: ubuntu-latest
     steps:
+      - name: Generate GitHub App Token
+        id: generate-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: "Parent-project"
       - run: |
           curl -X POST \
             -H "Authorization: token ${{ secrets.PARENT_REPO_PAT }}" \
