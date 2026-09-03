@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   notify:
-    uses: Test-orga-2ee5d541-2ef3-4a3f-8bac/workflows/.github/workflows/notify-parent-docs.yml
+    uses: Test-orga-2ee5d541-2ef3-4a3f-8bac/workflows/.github/workflows/notify-parent-docs.yml@v1
     with:
       event_type: 'child project trigger'
     secrets:
