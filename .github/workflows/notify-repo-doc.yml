@@ -18,7 +18,8 @@ jobs:
           owner: Test-orga-2ee5d541-2ef3-4a3f-8bac
           repositories: Parent-project
 
-      - name: Debug - check token permissions
+      - name: Debug - raw token access
         run: |
           curl -s -H "Authorization: token ${{ steps.app-token.outputs.token }}" \
-            https://api.github.com/installation/repositories | jq '.repositories[].permissions // .permissions'
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/installation/repositories
