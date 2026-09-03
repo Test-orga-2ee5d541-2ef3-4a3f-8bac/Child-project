@@ -18,10 +18,7 @@ jobs:
           owner: Test-orga-2ee5d541-2ef3-4a3f-8bac
           repositories: Parent-project
 
-      - name: Trigger parent rebuild
+      - name: Debug - check token permissions
         run: |
-          curl -X POST \
-            -H "Authorization: token ${{ steps.app-token.outputs.token }}" \
-            -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/repos/Test-orga-2ee5d541-2ef3-4a3f-8bac/Parent-project/dispatches \
-            -d '{"event_type":"child-docs-updated"}'
+          curl -s -H "Authorization: token ${{ steps.app-token.outputs.token }}" \
+            https://api.github.com/installation/repositories | jq '.repositories[].permissions // .permissions'
