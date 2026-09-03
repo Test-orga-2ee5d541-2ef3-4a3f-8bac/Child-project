@@ -1,8 +1,9 @@
-name: Notify docs site
+name: notify-repo-doc.yml
 on:
   push:
-    tags:
-      - 'v*'
+    branches: [main]
+    paths:
+      - 'docs/**'
 
 jobs:
   notify:
