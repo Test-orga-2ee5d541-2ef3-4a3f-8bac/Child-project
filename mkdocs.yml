@@ -1,1 +1,59 @@
-site_name: My Docs
+# ==============================================================================
+# Informations du Projet
+# ==============================================================================
+site_name: Dev local
+
+# ==============================================================================
+# Configuration du Thème (Material)
+# ==============================================================================
+theme:
+  name: material
+  language: fr
+  logo: assets/logo-short.png
+  favicon: assets/logo.ico
+  features:
+#    - navigation.tabs
+    - navigation.footer
+    - navigation.instant
+  palette:
+    # Mode clair
+    - scheme: default
+      primary: deep purple
+      toggle:
+        icon: material/weather-night
+        name: Passer au mode sombre
+    # Mode sombre
+    - scheme: slate
+      primary: deep purple
+      toggle:
+        icon: material/weather-sunny
+        name: Passer au mode clair
+# ==============================================================================
+# Plugins
+# ==============================================================================
+plugins:
+  - search
+  - awesome-pages
+
+markdown_extensions:
+  - tables
+  - attr_list
+  - admonition
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+# ==============================================================================
+# Navigation
+# ==============================================================================
+#nav:
+#  - ...
