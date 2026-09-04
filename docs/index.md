@@ -1,6 +1,6 @@
 # Bienvenue sur MkDocs
 
-Les gobelins sont à la montagne 
+Les gobelins sont à la plage 
 
 For full documentation visit [mkdocs.org](https://www.mkdocs.org).
 
